@@ -25,6 +25,11 @@ export var getTrackCSS = function(spec) {
     } else {
       trackWidth = (spec.slideCount + 2*spec.slidesToShow) * spec.slideWidth;
     }
+
+	// Double the track container width to prevent duplicated slides[1] from overflowing to more rows.
+	// 	[1] Slides are duplicated to make infinite scrolling work.
+	if (spec.infinite) trackWidth *= 2;
+
   } else {
     trackHeight = trackChildren * spec.slideHeight;
   }
